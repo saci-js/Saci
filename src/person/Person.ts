@@ -17,6 +17,7 @@ export class Person {
    * const cpf = saci.person.cpf() // 123.456.789-01
    * ```
    */
+  // TODO(wasix): No futuro talvez seja legal ter uma opção para voltar formatado ou não
   cpf(): string {
     const N = randomBetween(100_000_000, 999_999_999);
     const digits = String(N).split("").map(Number);

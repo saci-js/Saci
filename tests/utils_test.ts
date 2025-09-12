@@ -2,7 +2,7 @@ import { pickRandom, randomBetween } from "../src/utils.ts";
 
 import { assert, assertGreaterOrEqual, assertLessOrEqual } from "@std/assert";
 
-Deno.test("pickRandom() returns a random element from an array", () => {
+Deno.test("pickRandom()", () => {
   const choices = [
     "São Paulo",
     "Rio de Janeiro",
@@ -16,7 +16,7 @@ Deno.test("pickRandom() returns a random element from an array", () => {
   assert(choices.includes(choosen));
 });
 
-Deno.test("randomBetween() generates a number between a range", () => {
+Deno.test("randomBetween()", () => {
   const min = 1;
   const max = 10;
   for (let i = 0; i < 100; i++) {

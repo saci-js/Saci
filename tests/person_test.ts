@@ -17,17 +17,15 @@ function isValidCpf(cpf: string) {
   return true;
 }
 
-Deno.test("person.cpf() returns a valid cpf", () => {
-  const person = new Person();
+const person = new Person();
 
+Deno.test("person.cpf()", () => {
   const cpf = person.cpf();
 
   assert(isValidCpf(cpf));
 });
 
 Deno.test("person.cpf() does not return the same cpf", () => {
-  const person = new Person();
-
   const cpf1 = person.cpf();
   const cpf2 = person.cpf();
 
