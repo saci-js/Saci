@@ -3,7 +3,7 @@ import banks from "./banks.ts";
 /**
  * Class containing many methods that contain brasilian info.
  *
- * @class Person
+ * @class Brasil
  */
 export class Brasil {
   /**

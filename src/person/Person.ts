@@ -45,4 +45,32 @@ export class Person {
 
     return `${firstThree}.${secondThree}.${lastThree}-${digit1}${digit2}`;
   }
+  /**
+   * Generates a random valid RG
+   *
+   * @returns a valid RG.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci5/saci";
+   * const rg = saci.person.rg() // 12.456.789-X
+   * ```
+   */
+  rg(): string {
+    const N = randomBetween(10_000_000, 99_999_999);
+    const digits = String(N).split("").map(Number);
+
+    const weightedSum = digits.reduce(
+      (acc, digit, idx) => acc + digit * (9 - idx),
+      0,
+    );
+
+    const digit = weightedSum % 11 === 10 ? "X" : weightedSum % 11;
+
+    const firstTwo = digits.slice(0, 2).join("");
+    const secondThree = digits.slice(2, 5).join("");
+    const lastThree = digits.slice(5, 8).join("");
+
+    return `${firstTwo}.${secondThree}.${lastThree}-${digit}`;
+  }
 }
