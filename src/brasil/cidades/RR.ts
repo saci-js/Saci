@@ -1,0 +1,17 @@
+export default [
+  {nome: "Amajari", codigoIBGE: "1400027" },
+  {nome: "Cantá", codigoIBGE: "1400175" },
+  {nome: "Caroebe", codigoIBGE: "1400233" },
+  {nome: "Iracema", codigoIBGE: "1400282" },
+  {nome: "Pacaraima", codigoIBGE: "1400456" },
+  {nome: "Rorainópolis", codigoIBGE: "1400472" },
+  {nome: "Uiramutã", codigoIBGE: "1400704" },
+  {nome: "Boa Vista", codigoIBGE: "1400100" },
+  {nome: "Caracaraí", codigoIBGE: "1400209" },
+  {nome: "Alto Alegre", codigoIBGE: "1400050" },
+  {nome: "Bonfim", codigoIBGE: "1400159" },
+  {nome: "Mucajaí", codigoIBGE: "1400308" },
+  {nome: "Normandia", codigoIBGE: "1400407" },
+  {nome: "São João da Baliza", codigoIBGE: "1400506" },
+  {nome: "São Luiz", codigoIBGE: "1400605" },
+]

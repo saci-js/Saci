@@ -1,0 +1,18 @@
+export default [
+  {nome: "Vitória do Jari", codigoIBGE: "1600808" },
+  {nome: "Amapá", codigoIBGE: "1600105" },
+  {nome: "Calçoene", codigoIBGE: "1600204" },
+  {nome: "Macapá", codigoIBGE: "1600303" },
+  {nome: "Mazagão", codigoIBGE: "1600402" },
+  {nome: "Oiapoque", codigoIBGE: "1600501" },
+  {nome: "Ferreira Gomes", codigoIBGE: "1600238" },
+  {nome: "Laranjal do Jari", codigoIBGE: "1600279" },
+  {nome: "Santana", codigoIBGE: "1600600" },
+  {nome: "Tartarugalzinho", codigoIBGE: "1600709" },
+  {nome: "Pedra Branca do Amapari", codigoIBGE: "1600154" },
+  {nome: "Serra do Navio", codigoIBGE: "1600055" },
+  {nome: "Cutias", codigoIBGE: "1600212" },
+  {nome: "Itaubal", codigoIBGE: "1600253" },
+  {nome: "Porto Grande", codigoIBGE: "1600535" },
+  {nome: "Pracuúba", codigoIBGE: "1600550" },
+]
