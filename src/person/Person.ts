@@ -2,7 +2,13 @@ import { pickRandom, randomBetween } from "../utils.ts";
 import { fem, masc } from "./names/firstNames.ts";
 import lastNames from "./names/lastNames.ts";
 
+/** Options for {@linkcode Person.firstName} or {@linkcode Person.fullName}. */
 export interface NamesOptions {
+  /**
+   * The set to where to get the name from.
+   *
+   * @default {"neutral"}
+   */
   set: "neutral" | "masculine" | "feminine";
 }
 
@@ -80,6 +86,21 @@ export class Person {
     return `${firstTwo}.${secondThree}.${lastThree}-${digit}`;
   }
 
+  /**
+   * Generates a random first name.
+   *
+   * @returns a first name string.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci5/saci";
+   * const neutralName = saci.person.firstName() // Lucas, Ana, Rodrigo, Maria, ...
+   *
+   * const mascName = saci.person.firstName({ set: "masculine" }) // Lucas, Rodrigo, ...
+   *
+   * const femName = saci.person.firstName({ set: "feminine" }) // Ana, Maria, ...
+   * ```
+   */
   firstName(opts?: NamesOptions): string {
     const { set = "neutral" } = opts ?? {};
 
@@ -88,10 +109,37 @@ export class Person {
     return set === "masculine" ? pickRandom(masc) : pickRandom(fem);
   }
 
+  /**
+   * Generates a random last name.
+   *
+   * @returns a last name string.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci5/saci";
+   * const neutralName = saci.person.lastName() // Gonçalves, Soares, Souza, ...
+   * ```
+   */
   lastName(): string {
     return pickRandom(lastNames);
   }
 
+  /**
+   * Generates a full name.
+   *
+   * @returns a full name string.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci5/saci";
+
+   * const neutralName = saci.person.fullName() // João de Castro Barbosa, Ana Lima Freitas ...
+   *
+   * const mascName = saci.person.fullName({ set: "masculine" }) // João do Castro Barbosa, ...
+   *
+   * const femName = saci.person.fullName({ set: "feminine" }) // Ana Lima da Freitas, ...
+   * ```
+   */
   fullName(opts?: NamesOptions): string {
     const { set = "neutral" } = opts ?? {};
 

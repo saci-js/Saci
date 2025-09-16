@@ -2,18 +2,16 @@ import { pickRandom } from "../utils.ts";
 import banks from "./banks.ts";
 import states from "./states.ts";
 
-
-/** City object to be returned in {@linkcode Brasil.city} */
+/** City object to be returned in {@linkcode Brasil.city}. */
 export interface City {
-
   /**
-  * The name of the city
-  */
+   * The name of the city.
+   */
   name: string;
 
   /**
-  * City IBGE code
-  */
+   * City IBGE code.
+   */
   ibgeCode?: string;
 }
 
@@ -46,22 +44,20 @@ export type StateBrasil =
   | "SE"
   | "TO";
 
-
 /** Options for {@linkcode Brasil.city}. */
 export interface CityOptions {
   /**
-  * A state to select the city from
-  *
-  * @default {pickRandom(states)}
-  */
+   * A state to select the city from.
+   *
+   * @default {pickRandom(states)}
+   */
   state: StateBrasil;
 
-
   /**
-  * If true will return the city ibgeCode
-  * 
-  * @default {false}
-  */
+   * If true will return the city ibgeCode.
+   *
+   * @default {false}
+   */
   ibge?: boolean;
 }
 
@@ -92,16 +88,16 @@ export class Brasil {
    *
    * @param opts Options for returning a random city
    * @returns
-   * - `string` → when `ibge` is not provided or `false`, returns only the city name.  
+   * - `string` → when `ibge` is not provided or `false`, returns only the city name.
    * - `City` → when `ibge` is `true`, returns an object with city information.
    *
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const randomCity = await saci.brasil.city(); 
-   * 
+   * const randomCity = await saci.brasil.city();
+   *
    * const citySP = await saci.brasil.city({ state: "SP" });
-   * 
+   *
    * const cityObj = await saci.brasil.city({ state: "RJ", ibge: true });
    * ```
    */
