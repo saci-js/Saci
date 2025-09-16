@@ -2,12 +2,21 @@ import { pickRandom } from "../utils.ts";
 import banks from "./banks.ts";
 import states from "./states.ts";
 
+
+/** City object to be returned in {@linkcode Brasil.city} */
 export interface City {
+
+  /**
+  * The name of the city
+  */
   name: string;
+
+  /**
+  * City IBGE code
+  */
   ibgeCode?: string;
 }
 
-// Tipo union para states brasileiros (funciona como enum)
 export type StateBrasil =
   | "AC"
   | "AL"
@@ -37,10 +46,25 @@ export type StateBrasil =
   | "SE"
   | "TO";
 
+
+/** Options for {@linkcode Brasil.city}. */
 export interface CityOptions {
-  state?: StateBrasil;
+  /**
+  * A state to select the city from
+  *
+  * @default {pickRandom(states)}
+  */
+  state: StateBrasil;
+
+
+  /**
+  * If true will return the city ibgeCode
+  * 
+  * @default {false}
+  */
   ibge?: boolean;
 }
+
 /**
  * Class containing many methods that contain brasilian info.
  *
@@ -64,32 +88,23 @@ export class Brasil {
   }
 
   /**
-   * Returns a random city from a random Brazilian state.
-   *
-   * @returns a City object with name and ibgeCode.
-   *
-   * @example
-   * ```ts
-   * import { saci } from "@saci5/saci";
-   * const city = await saci.brasil.city(); // Random state
-   * ```
-   */
-
-  /**
    * Returns a random city from a specific Brazilian state.
    *
-   * @param state - The state UF code (e.g., "SP", "RJ", "MG")
-   * @returns a City object from the specified state.
-   * @param ibge - If true, returns a City object with name and ibgeCode.
+   * @param opts Options for returning a random city
+   * @returns
+   * - `string` → when `ibge` is not provided or `false`, returns only the city name.  
+   * - `City` → when `ibge` is `true`, returns an object with city information.
    *
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const citySP = await saci.brasil.city("SP"); // São Paulo state without ibge code
-   * const cityRJ = await saci.brasil.city("RJ", true); // Rio de Janeiro state and ibge code
+   * const randomCity = await saci.brasil.city(); 
+   * 
+   * const citySP = await saci.brasil.city({ state: "SP" });
+   * 
+   * const cityObj = await saci.brasil.city({ state: "RJ", ibge: true });
    * ```
    */
-  //opts: CityOptions = {} as CityOptions
   async city(opts?: CityOptions): Promise<City | string> {
     const stateUF: StateBrasil = opts?.state || this.state();
     const ibge: boolean = opts?.ibge || false;
