@@ -1,0 +1,17 @@
+export default [
+  { name: "Amajari", ibgeCode: "1400027" },
+  { name: "Cantá", ibgeCode: "1400175" },
+  { name: "Caroebe", ibgeCode: "1400233" },
+  { name: "Iracema", ibgeCode: "1400282" },
+  { name: "Pacaraima", ibgeCode: "1400456" },
+  { name: "Rorainópolis", ibgeCode: "1400472" },
+  { name: "Uiramutã", ibgeCode: "1400704" },
+  { name: "Boa Vista", ibgeCode: "1400100" },
+  { name: "Caracaraí", ibgeCode: "1400209" },
+  { name: "Alto Alegre", ibgeCode: "1400050" },
+  { name: "Bonfim", ibgeCode: "1400159" },
+  { name: "Mucajaí", ibgeCode: "1400308" },
+  { name: "Normandia", ibgeCode: "1400407" },
+  { name: "São João da Baliza", ibgeCode: "1400506" },
+  { name: "São Luiz", ibgeCode: "1400605" },
+];

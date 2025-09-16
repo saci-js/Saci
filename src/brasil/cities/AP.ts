@@ -1,0 +1,18 @@
+export default [
+  { name: "Vitória do Jari", ibgeCode: "1600808" },
+  { name: "Amapá", ibgeCode: "1600105" },
+  { name: "Calçoene", ibgeCode: "1600204" },
+  { name: "Macapá", ibgeCode: "1600303" },
+  { name: "Mazagão", ibgeCode: "1600402" },
+  { name: "Oiapoque", ibgeCode: "1600501" },
+  { name: "Ferreira Gomes", ibgeCode: "1600238" },
+  { name: "Laranjal do Jari", ibgeCode: "1600279" },
+  { name: "Santana", ibgeCode: "1600600" },
+  { name: "Tartarugalzinho", ibgeCode: "1600709" },
+  { name: "Pedra Branca do Amapari", ibgeCode: "1600154" },
+  { name: "Serra do Navio", ibgeCode: "1600055" },
+  { name: "Cutias", ibgeCode: "1600212" },
+  { name: "Itaubal", ibgeCode: "1600253" },
+  { name: "Porto Grande", ibgeCode: "1600535" },
+  { name: "Pracuúba", ibgeCode: "1600550" },
+];
