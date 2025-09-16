@@ -56,13 +56,14 @@ export class Brasil {
    * Returns a random city from a specific Brazilian state.
    *
    * @param state - The state UF code (e.g., "SP", "RJ", "MG")
-   * @returns a City object with nome and codigoIBGE from the specified state.
+   * @returns a City object from the specified state.
+   * @param ibge - If true, returns a City object with nome and codigoIBGE.
    *
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const citySP = await saci.brasil.city("SP"); // São Paulo state
-   * const cityRJ = await saci.brasil.city("RJ"); // Rio de Janeiro state
+   * const citySP = await saci.brasil.city("SP"); // São Paulo state without ibge code
+   * const cityRJ = await saci.brasil.city("RJ", true); // Rio de Janeiro state and ibge code
    * ```
    */
   //opts: CityOptions = {} as CityOptions

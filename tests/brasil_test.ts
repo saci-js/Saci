@@ -29,7 +29,7 @@ Deno.test("brasil.city() with params", () => {
     states.forEach(async (state) => {
       const brasil = new Brasil();
       const city: City = await brasil.city(state, ibge);
-    
+      console.log(brasil.city(state, ibge));
       assert(typeof city === "object");
       assert(typeof city.nome === "string");
       if(ibge) 
