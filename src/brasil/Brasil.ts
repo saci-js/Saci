@@ -3,21 +3,44 @@ import banks from "./banks.ts";
 import states from "./states.ts";
 
 export interface City {
-  nome: string;
-  codigoIBGE?: string;
+  name: string;
+  ibgeCode?: string;
 }
 
 // Tipo union para states brasileiros (funciona como enum)
-export type StateBrasil = 
-  | "AC" | "AL" | "AM" | "AP" | "BA" | "CE" | "DF" | "ES" 
-  | "GO" | "MA" | "MT" | "MS" | "MG" | "PA" | "PB" | "PR" 
-  | "PE" | "PI" | "RJ" | "RN" | "RS" | "RO" | "RR" | "SC" 
-  | "SP" | "SE" | "TO";
+export type StateBrasil =
+  | "AC"
+  | "AL"
+  | "AM"
+  | "AP"
+  | "BA"
+  | "CE"
+  | "DF"
+  | "ES"
+  | "GO"
+  | "MA"
+  | "MT"
+  | "MS"
+  | "MG"
+  | "PA"
+  | "PB"
+  | "PR"
+  | "PE"
+  | "PI"
+  | "RJ"
+  | "RN"
+  | "RS"
+  | "RO"
+  | "RR"
+  | "SC"
+  | "SP"
+  | "SE"
+  | "TO";
 
-// export interface CityOptions {
-//   state?: StateBrasil,
-//   ibge?: boolean
-// }
+export interface CityOptions {
+  state?: StateBrasil;
+  ibge?: boolean;
+}
 /**
  * Class containing many methods that contain brasilian info.
  *
@@ -43,7 +66,7 @@ export class Brasil {
   /**
    * Returns a random city from a random Brazilian state.
    *
-   * @returns a City object with nome and codigoIBGE.
+   * @returns a City object with name and ibgeCode.
    *
    * @example
    * ```ts
@@ -51,13 +74,13 @@ export class Brasil {
    * const city = await saci.brasil.city(); // Random state
    * ```
    */
-  
+
   /**
    * Returns a random city from a specific Brazilian state.
    *
    * @param state - The state UF code (e.g., "SP", "RJ", "MG")
    * @returns a City object from the specified state.
-   * @param ibge - If true, returns a City object with nome and codigoIBGE.
+   * @param ibge - If true, returns a City object with name and ibgeCode.
    *
    * @example
    * ```ts
@@ -67,14 +90,13 @@ export class Brasil {
    * ```
    */
   //opts: CityOptions = {} as CityOptions
-  async city(state? : StateBrasil, ibge? : boolean): Promise<City> {
-    
-    const stateUF : StateBrasil = state || this.state();
-    
-    const citiesModule = await import(`./cities/${stateUF}.ts`);
-    const city : City = pickRandom(citiesModule.default);
+  async city(opts?: CityOptions): Promise<City | string> {
+    const stateUF: StateBrasil = opts?.state || this.state();
+    const ibge: boolean = opts?.ibge || false;
 
-    return ibge ? city : {nome: city.nome};
+    const citiesModule = await import(`./cities/${stateUF}.ts`);
+    const city: City = pickRandom(citiesModule.default);
+    return ibge ? city : city.name;
   }
 
   /**
@@ -89,6 +111,6 @@ export class Brasil {
    * ```
    */
   state(): StateBrasil {
-    return pickRandom(states);
+    return pickRandom([...states]) as StateBrasil;
   }
 }

@@ -25,7 +25,7 @@ const states = [
   "SC",
   "SP",
   "SE",
-  "TO"
+  "TO",
 ] as const;
 
 export default states;

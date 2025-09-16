@@ -1,5 +1,10 @@
 import { assert } from "@std/assert";
-import { Brasil, type City, type StateBrasil } from "../src/brasil/Brasil.ts";
+import {
+  Brasil,
+  type City,
+  CityOptions,
+  type StateBrasil,
+} from "../src/brasil/Brasil.ts";
 import bancos from "../src/brasil/banks.ts";
 import states from "../src/brasil/states.ts";
 
@@ -12,36 +17,27 @@ Deno.test("brasil.banco()", () => {
 
 Deno.test("brasil.city()", async () => {
   const brasil = new Brasil();
-  const city: City = await brasil.city();
-  
-  assert(typeof city === "object");
-  assert(typeof city.nome === "string");
-  assert(typeof city.codigoIBGE === "string");
-  assert(city.nome.length > 0);
-  
-  assert(/^\d{7}$/.test(city.codigoIBGE));
-});
 
-Deno.test("brasil.city() with params", () => {
-  const ibge = [true, false, undefined];
-  ibge.forEach((ibge) => {
-    const states : StateBrasil[] = [ "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
-    states.forEach(async (state) => {
-      const brasil = new Brasil();
-      const city: City = await brasil.city(state, ibge);
-      console.log(brasil.city(state, ibge));
-      assert(typeof city === "object");
-      assert(typeof city.nome === "string");
-      if(ibge) 
-        assert(typeof city.codigoIBGE === "string");
-      else
-        assert(city.codigoIBGE === undefined);
+  const cityNoState: City | string = await brasil.city();
+  assert(typeof cityNoState === "string");
+  assert(cityNoState.length > 0);
 
-      assert(city.nome.length > 0);
-      if(ibge)
-        assert(/^\d{7}$/.test(city.codigoIBGE!));
-      else
-        assert(city.codigoIBGE === undefined);
+  [true, false, undefined].forEach((ibge: boolean | undefined) => {
+    [...states].forEach(async (state) => {
+      const city: City | string = await brasil.city(
+        { state, ibge } as CityOptions,
+      );
+
+      if (ibge) {
+        assert(typeof city === "object");
+        assert(typeof city.name === "string");
+        assert(typeof city.ibgeCode === "string");
+        assert(city.name.length > 0);
+        assert(/^\d{7}$/.test(city.ibgeCode));
+      } else {
+        assert(typeof city === "string");
+        assert(city.length > 0);
+      }
     });
   });
 });

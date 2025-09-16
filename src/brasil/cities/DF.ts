@@ -1,3 +1,3 @@
 export default [
-  {nome: "Brasília", codigoIBGE: "5300108" },
-]
+  { name: "Brasília", ibgeCode: "5300108" },
+];
