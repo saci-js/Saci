@@ -84,7 +84,7 @@ export class Brasil {
   }
 
   /**
-   * Returns a random city from a specific Brazilian state.
+   * Returns a random city from a Brazilian state.
    *
    * @param opts Options for returning a random city
    * @returns
