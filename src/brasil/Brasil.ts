@@ -1,15 +1,23 @@
 import { pickRandom } from "../utils.ts";
 import banks from "./banks.ts";
-import estados from "./estados.ts";
+import states from "./states.ts";
 
-export interface Cidade {
+export interface City {
   nome: string;
-  codigoIBGE: string;
+  codigoIBGE?: string;
 }
 
-// Tipo union para estados brasileiros (funciona como enum)
-export type EstadoBrasil = typeof estados[number];
+// Tipo union para states brasileiros (funciona como enum)
+export type StateBrasil = 
+  | "AC" | "AL" | "AM" | "AP" | "BA" | "CE" | "DF" | "ES" 
+  | "GO" | "MA" | "MT" | "MS" | "MG" | "PA" | "PB" | "PR" 
+  | "PE" | "PI" | "RJ" | "RN" | "RS" | "RO" | "RR" | "SC" 
+  | "SP" | "SE" | "TO";
 
+// export interface CityOptions {
+//   state?: StateBrasil,
+//   ibge?: boolean
+// }
 /**
  * Class containing many methods that contain brasilian info.
  *
@@ -35,37 +43,37 @@ export class Brasil {
   /**
    * Returns a random city from a random Brazilian state.
    *
-   * @returns a Cidade object with nome and codigoIBGE.
+   * @returns a City object with nome and codigoIBGE.
    *
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const cidade = await saci.brasil.cidade(); // Random state
+   * const city = await saci.brasil.city(); // Random state
    * ```
    */
-  async cidade(): Promise<Cidade>;
   
   /**
    * Returns a random city from a specific Brazilian state.
    *
-   * @param estado - The state UF code (e.g., "SP", "RJ", "MG")
-   * @returns a Cidade object with nome and codigoIBGE from the specified state.
+   * @param state - The state UF code (e.g., "SP", "RJ", "MG")
+   * @returns a City object with nome and codigoIBGE from the specified state.
    *
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const cidadeSP = await saci.brasil.cidade("SP"); // São Paulo state
-   * const cidadeRJ = await saci.brasil.cidade("RJ"); // Rio de Janeiro state
+   * const citySP = await saci.brasil.city("SP"); // São Paulo state
+   * const cityRJ = await saci.brasil.city("RJ"); // Rio de Janeiro state
    * ```
    */
-  async cidade(estado: EstadoBrasil): Promise<Cidade>;
-  async cidade(estado?: EstadoBrasil): Promise<Cidade> {
-    const estadoUF = estado || pickRandom(estados);
+  //opts: CityOptions = {} as CityOptions
+  async city(state? : StateBrasil, ibge? : boolean): Promise<City> {
     
-    const cidadesModule = await import(`./cidades/${estadoUF}.ts`);
-    const cidades = cidadesModule.default;
+    const stateUF : StateBrasil = state || this.state();
     
-    return pickRandom(cidades);
+    const citiesModule = await import(`./cities/${stateUF}.ts`);
+    const city : City = pickRandom(citiesModule.default);
+
+    return ibge ? city : {nome: city.nome};
   }
 
   /**
@@ -76,10 +84,10 @@ export class Brasil {
    * @example
    * ```ts
    * import { saci } from "@saci5/saci";
-   * const uf = saci.brasil.estado() // "SP", "RJ", "MG", etc.
+   * const uf = saci.brasil.state() // "SP", "RJ", "MG", etc.
    * ```
    */
-  estado(): EstadoBrasil {
-    return pickRandom(estados);
+  state(): StateBrasil {
+    return pickRandom(states);
   }
 }

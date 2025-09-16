@@ -17,7 +17,7 @@
  * const choosen = pickRandom(choices)
  * ```
  */
-export function pickRandom<T>(array: Array<T>): T {
+export function pickRandom<T>(array: readonly T[] | Array<T>): T {
   return array[Math.floor(Math.random() * array.length)];
 }
 

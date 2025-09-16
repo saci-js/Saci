@@ -1,7 +1,7 @@
 import { assert } from "@std/assert";
-import { Brasil, type Cidade, type EstadoBrasil } from "../src/brasil/Brasil.ts";
+import { Brasil, type City, type StateBrasil } from "../src/brasil/Brasil.ts";
 import bancos from "../src/brasil/banks.ts";
-import estados from "../src/brasil/estados.ts";
+import states from "../src/brasil/states.ts";
 
 Deno.test("brasil.banco()", () => {
   const brasil = new Brasil();
@@ -10,49 +10,47 @@ Deno.test("brasil.banco()", () => {
   assert(bancos.includes(banco));
 });
 
-Deno.test("brasil.cidade()", async () => {
+Deno.test("brasil.city()", async () => {
   const brasil = new Brasil();
-  const cidade: Cidade = await brasil.cidade();
+  const city: City = await brasil.city();
   
-  assert(typeof cidade === "object");
-  assert(typeof cidade.nome === "string");
-  assert(typeof cidade.codigoIBGE === "string");
-  assert(cidade.nome.length > 0);
+  assert(typeof city === "object");
+  assert(typeof city.nome === "string");
+  assert(typeof city.codigoIBGE === "string");
+  assert(city.nome.length > 0);
   
-  assert(/^\d{7}$/.test(cidade.codigoIBGE));
+  assert(/^\d{7}$/.test(city.codigoIBGE));
 });
 
-Deno.test("brasil.cidade() com estado - São Paulo", async () => {
-  const brasil = new Brasil();
-  const cidade: Cidade = await brasil.cidade("SP");
+Deno.test("brasil.city() with params", () => {
+  const ibge = [true, false, undefined];
+  ibge.forEach((ibge) => {
+    const states : StateBrasil[] = [ "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
+    states.forEach(async (state) => {
+      const brasil = new Brasil();
+      const city: City = await brasil.city(state, ibge);
+    
+      assert(typeof city === "object");
+      assert(typeof city.nome === "string");
+      if(ibge) 
+        assert(typeof city.codigoIBGE === "string");
+      else
+        assert(city.codigoIBGE === undefined);
 
-  assert(typeof cidade === "object");
-  assert(typeof cidade.nome === "string");
-  assert(typeof cidade.codigoIBGE === "string");
-  
-  assert(cidade.nome.length > 0);
-  assert(/^\d{7}$/.test(cidade.codigoIBGE));
-  assert(cidade.codigoIBGE.startsWith("35"));
+      assert(city.nome.length > 0);
+      if(ibge)
+        assert(/^\d{7}$/.test(city.codigoIBGE!));
+      else
+        assert(city.codigoIBGE === undefined);
+    });
+  });
 });
 
-Deno.test("brasil.cidade() com estado - Rio de Janeiro", async () => {
+Deno.test("brasil.state()", () => {
   const brasil = new Brasil();
-  const cidade: Cidade = await brasil.cidade("RJ");
+  const state: StateBrasil = brasil.state();
 
-  assert(typeof cidade === "object");
-  assert(typeof cidade.nome === "string");
-  assert(typeof cidade.codigoIBGE === "string");
-  
-  assert(cidade.nome.length > 0);
-  assert(/^\d{7}$/.test(cidade.codigoIBGE));
-  assert(cidade.codigoIBGE.startsWith("33"));
-});
-
-Deno.test("brasil.estado()", () => {
-  const brasil = new Brasil();
-  const estado: EstadoBrasil = brasil.estado();
-
-  assert(estados.includes(estado));
-  assert(typeof estado === "string");
-  assert(estado.length === 2);
+  assert(states.includes(state));
+  assert(typeof state === "string");
+  assert(state.length === 2);
 });
