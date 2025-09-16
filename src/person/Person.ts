@@ -1,4 +1,10 @@
-import { randomBetween } from "../utils.ts";
+import { pickRandom, randomBetween } from "../utils.ts";
+import { fem, masc } from "./names/firstNames.ts";
+import lastNames from "./names/lastNames.ts";
+
+export interface NamesOptions {
+  set: "neutral" | "masculine" | "feminine";
+}
 
 /**
  * Class containing many methods that are useful for creating fake data about a person.
@@ -72,5 +78,35 @@ export class Person {
     const lastThree = digits.slice(5, 8).join("");
 
     return `${firstTwo}.${secondThree}.${lastThree}-${digit}`;
+  }
+
+  firstName(opts?: NamesOptions): string {
+    const { set = "neutral" } = opts ?? {};
+
+    if (set === "neutral") return pickRandom([...masc, ...fem]);
+
+    return set === "masculine" ? pickRandom(masc) : pickRandom(fem);
+  }
+
+  lastName(): string {
+    return pickRandom(lastNames);
+  }
+
+  fullName(opts?: NamesOptions): string {
+    const { set = "neutral" } = opts ?? {};
+
+    const lastNamesNumber = randomBetween(1, 3);
+    const particles = ["do", "da", "de"];
+
+    const first = this.firstName({ set });
+
+    const last = Array.from({ length: lastNamesNumber }, () => {
+      const name = this.lastName();
+      return randomBetween(1, 10) > 7
+        ? `${pickRandom(particles)} ${name}`
+        : name;
+    });
+
+    return `${first} ${last.join(" ")}`;
   }
 }

@@ -1,8 +1,11 @@
+import { fem, masc } from "../src/person/names/firstNames.ts";
+import lastNames from "../src/person/names/lastNames.ts";
 import { Person } from "../src/person/Person.ts";
-import { assert, assertNotEquals } from "@std/assert";
+import { assert, assertArrayIncludes, assertNotEquals } from "@std/assert";
 
 const CPF_REGEX = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 const RG_REGEX = /^\d{1,2}\.?\d{3}\.?\d{3}-?[0-9Xx]$/;
+const PARTICLES = ["do", "da", "de"];
 
 // dirty hack to check if the cpf string is valid
 function isValidCpf(cpf: string) {
@@ -48,4 +51,44 @@ Deno.test("person.rg() does not return the same rg", () => {
   const rg2 = person.rg();
 
   assertNotEquals(rg1, rg2);
+});
+
+Deno.test("person.firstName()", () => {
+  const name = person.firstName();
+
+  assert(typeof name, "string");
+  assert([...fem, ...masc].includes(name));
+
+  const masculineName = person.firstName({ set: "masculine" });
+
+  assert(typeof masculineName, "string");
+  assert(masc.includes(masculineName));
+  assert(!fem.includes(masculineName));
+
+  const feminineName = person.firstName({ set: "feminine" });
+
+  assert(typeof feminineName, "string");
+  assert(fem.includes(feminineName));
+  assert(!masc.includes(feminineName));
+});
+
+Deno.test("person.lastName()", () => {
+  const lastName = person.lastName();
+
+  assert(typeof lastName, "string");
+  assert(lastNames.includes(lastName));
+});
+
+Deno.test("person.fullName()", () => {
+  const fullName = person.fullName();
+
+  assert(typeof fullName === "string");
+
+  const sections = fullName.split(" ");
+  const first = sections[0];
+
+  assert([...fem, ...masc].includes(first));
+
+  const restNames = sections.slice(1).filter((val) => !PARTICLES.includes(val));
+  assertArrayIncludes(lastNames, restNames);
 });
