@@ -1,7 +1,9 @@
 {
   "tasks": {
     "test": "deno test",
-    "ok": "deno lint && deno fmt"
+    "ok": "deno lint && deno fmt",
+    "test:node": "npm i && node _tools/run_test.mjs",
+    "test:bun": "npm i && bun test _tools/run_test.mjs"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.14"
