@@ -8,8 +8,5 @@
   },
   "engines": {
     "node": ">=23.6.0"
-  },
-  "imports": {
-    "@std/assert": "npm:@jsr/std__assert@^1.0.14"
   }
 }
