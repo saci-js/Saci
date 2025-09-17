@@ -1,4 +1,5 @@
 import { pickRandom, randomBetween } from "../utils.ts";
+import ddds from "./ddds.ts";
 import { fem, masc } from "./names/firstNames.ts";
 import lastNames from "./names/lastNames.ts";
 
@@ -10,6 +11,37 @@ export interface NamesOptions {
    * @default {"neutral"}
    */
   set: "neutral" | "masculine" | "feminine";
+}
+
+/** Options for {@linkcode Person.phone}. */
+export interface PhoneOptions {
+  /**
+   * If the phone should include a DDD.
+   *
+   * @default {true}
+   */
+  ddd?: boolean;
+
+  /**
+   * If the phone should include brazilian DDI.
+   *
+   * @default {false}
+   */
+  ddi?: boolean;
+
+  /**
+   * The length of the phone number.
+   *
+   * @default {9}
+   */
+  length?: 9 | 8;
+
+  /**
+   * If the number should return formated.
+   *
+   * @default {true}
+   */
+  formated?: boolean;
 }
 
 /**
@@ -156,5 +188,51 @@ export class Person {
     });
 
     return `${first} ${last.join(" ")}`;
+  }
+
+  /**
+   * Generates a phone number.
+   *
+   * @returns a phone number.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci5/saci";
+   *
+   * const yudi = {
+   *   name: "Yudi",
+   *   whatsapp: saci.person.phone({ ddi: true, ddd: true, length = 9, formated = true }), // +55 (11) 91234-5678
+   *   fixo: saci.person.phone({ length: 8 }) // (11) 4002-8922
+   * }
+   *
+   * ```
+   */
+  phone(opts?: PhoneOptions): string {
+    const { ddd = true, ddi = false, formated = true, length = 9 } = opts ?? {};
+    const BRAZIL_CODE = "55";
+    const DDD = String(pickRandom(ddds));
+
+    const firstHalf = randomBetween(1000, 9999);
+    const secondHalf = randomBetween(1000, 9999);
+
+    const isMobile = length === 9;
+    const number = isMobile
+      ? `9${firstHalf}-${secondHalf}`
+      : `${firstHalf}-${secondHalf}`;
+
+    if (formated) {
+      if (ddi && ddd) return `+${BRAZIL_CODE} (${DDD}) ${number}`;
+      if (ddd) return `(${DDD}) ${number}`;
+      if (ddi) return `+${BRAZIL_CODE} ${number}`;
+      return number;
+    }
+
+    const parts: string[] = [];
+    if (ddi) parts.push(BRAZIL_CODE);
+    if (ddd) parts.push(DDD);
+    parts.push(
+      isMobile ? `9${firstHalf}${secondHalf}` : `${firstHalf}${secondHalf}`,
+    );
+    return parts.join("");
   }
 }

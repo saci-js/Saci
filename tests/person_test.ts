@@ -1,11 +1,18 @@
 import { fem, masc } from "../src/person/names/firstNames.ts";
 import lastNames from "../src/person/names/lastNames.ts";
 import { Person } from "../src/person/Person.ts";
-import { assert, assertArrayIncludes, assertNotEquals } from "@std/assert";
+import {
+  assert,
+  assertArrayIncludes,
+  assertEquals,
+  assertNotEquals,
+} from "@std/assert";
 
 const CPF_REGEX = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 const RG_REGEX = /^\d{1,2}\.?\d{3}\.?\d{3}-?[0-9Xx]$/;
 const PARTICLES = ["do", "da", "de"];
+const FIXO_REGEX = /^(?:\+55\s?)?(?:\(?\d{2}\)?\s?)?\d{4}-\d{4}$/;
+const MOBILE_REGEX = /^(?:\+55\s?)?(?:\(?\d{2}\)?\s?)?9\d{4}-\d{4}$/;
 
 // dirty hack to check if the cpf string is valid
 function isValidCpf(cpf: string) {
@@ -91,4 +98,22 @@ Deno.test("person.fullName()", () => {
 
   const restNames = sections.slice(1).filter((val) => !PARTICLES.includes(val));
   assertArrayIncludes(lastNames, restNames);
+});
+
+Deno.test("person.phone()", () => {
+  const fone = person.phone();
+  assert(MOBILE_REGEX.test(fone));
+
+  const fixo = person.phone({ length: 8 });
+  assert(FIXO_REGEX.test(fixo));
+
+  const nonFormat = person.phone({ formated: false, ddi: true, ddd: true });
+  // 9 + 2 (ddd) + 2 (ddi)
+  assertEquals(nonFormat.length, 13);
+
+  const ddiNoDdd = person.phone({ ddi: true, ddd: false });
+
+  assert(!ddiNoDdd.includes("("));
+  const brasilFormat = ddiNoDdd.split(" ")[0];
+  assertEquals(brasilFormat, "+55");
 });
