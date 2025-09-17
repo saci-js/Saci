@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "test": "deno test",
+    "test": "deno test tests/*",
     "ok": "deno lint && deno fmt",
     "test:node": "npm i && node _tools/run_test.mjs",
     "test:bun": "npm i && bun test _tools/run_test.mjs"
