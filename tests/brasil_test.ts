@@ -2,7 +2,7 @@ import { assert } from "@std/assert";
 import {
   Brasil,
   type City,
-  CityOptions,
+  type CityOptions,
   type StateBrasil,
 } from "../src/brasil/Brasil.ts";
 import bancos from "../src/brasil/banks.ts";
