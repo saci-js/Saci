@@ -77,5 +77,4 @@ export default [
   { name: "Tacuru", ibgeCode: "5007950" },
   { name: "Taquarussu", ibgeCode: "5007976" },
   { name: "Juti", ibgeCode: "5005152" },
-  { name: "", ibgeCode: "5003157" },
 ];

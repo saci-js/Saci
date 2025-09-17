@@ -22,8 +22,10 @@ Deno.test("brasil.city()", async () => {
   assert(typeof cityNoState === "string");
   assert(cityNoState.length > 0);
 
-  [true, false, undefined].forEach((ibge: boolean | undefined) => {
-    [...states].forEach(async (state) => {
+  const ibgeOptions = [true, false, undefined];
+
+  for (const ibge of ibgeOptions) {
+    for (const state of states) {
       const city: City | string = await brasil.city(
         { state, ibge } as CityOptions,
       );
@@ -38,8 +40,8 @@ Deno.test("brasil.city()", async () => {
         assert(typeof city === "string");
         assert(city.length > 0);
       }
-    });
-  });
+    }
+  }
 });
 
 Deno.test("brasil.state()", () => {
