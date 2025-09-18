@@ -7,7 +7,7 @@ Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 > Os dados criados pela biblioteca são criados de forma randômica
 > e tem apenas a intenção de parecerem reais. Por favor não os use em produção.
 
-___
+---
 
 # Features 🏆
 - Brasil: cidades, estados, CEPs, e mais.
@@ -26,7 +26,7 @@ $ jsr add @saci5/saci
 Use com: 
 
 ```typescript
-import { saci } from "@saci5/saci"
+import { saci } from "@saci5/saci";
 
 const pessoa = {
     nome: saci.person.firstName(),
@@ -34,11 +34,11 @@ const pessoa = {
     telefone: saci.person.phone(),
     cpf: saci.person.cpf(),
     banco: saci.brasil.bank(),
-    estado: saci.brasil.state()
-}
+    estado: saci.brasil.state(),
+};
 ```
 veja a pasta `examples` para mais!
-___
+---
 
 # Acknowledgements 🤝
 - [Faker-js](https://github.com/faker-js/faker)
