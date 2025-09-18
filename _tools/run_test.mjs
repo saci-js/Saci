@@ -6,6 +6,7 @@ import "../tests/saci_test.ts";
 import "../tests/utils_test.ts";
 import "../tests/person_test.ts";
 import "../tests/brasil_test.ts";
+import "../tests/student_test.ts";
 
 for (const testDef of testDefinitions) {
   if (testDef.ignore) {

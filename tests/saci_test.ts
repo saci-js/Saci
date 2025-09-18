@@ -3,6 +3,7 @@ import { saci } from "../src/mod.ts";
 import { Saci } from "../src/Saci.ts";
 import { Person } from "../src/person/Person.ts";
 import { Brasil } from "../src/brasil/Brasil.ts";
+import { Student } from "../src/student/Student.ts";
 
 Deno.test("saci is instanceof Saci", () => {
   assertInstanceOf(saci, Saci);
@@ -14,4 +15,8 @@ Deno.test("saci.person is instanceof Person", () => {
 
 Deno.test("saci.brasil is instanceof Brasil", () => {
   assertInstanceOf(saci.brasil, Brasil);
+});
+
+Deno.test("saci.student is instanceof Student", () => {
+  assertInstanceOf(saci.student, Student);
 });
