@@ -4,8 +4,8 @@
 Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 
 > [!IMPORTANT]
-> Os dados criados pela biblioteca são criados de forma randômica e tem apenas
-> a intenção de parecerem reais. Por favor não os use em produção.
+> Os dados criados pela biblioteca são criados de forma randômica e tem apenas a
+> intenção de parecerem reais. Por favor não os use em produção.
 
 ---
 
