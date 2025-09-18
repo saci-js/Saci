@@ -1,4 +1,5 @@
 # Saci
+
 [![ci](https://github.com/Saci5/Saci/actions/workflows/ci.yml/badge.svg)](https://github.com/Saci5/Saci/actions/workflows/ci.yml)
 
 Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
@@ -10,10 +11,10 @@ Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 ---
 
 # Features 🏆
+
 - Brasil: cidades, estados, CEPs, e mais.
 - Pessoas: Nome, Sobrenome, RG, CPF, CNH, e mais.
 - Estudantes: RA, Faculdades, Cursos, e mais.
-
 
 # Uso 🏗️
 
@@ -23,18 +24,18 @@ Baixe com o [jsr](https://jsr.io/)
 $ jsr add @saci5/saci
 ```
 
-Use com: 
+Use com:
 
 ```typescript
-import { saci } from "@saci5/saci";untu-latest) (pull_request)Failing after 8s 
+import { saci } from "@saci5/saci";
 
 const pessoa = {
-    nome: saci.person.firstName(),
-    sobrenome: saci.person.lastName(),
-    telefone: saci.person.phone(),
-    cpf: saci.person.cpf(),
-    banco: saci.brasil.bank(),
-    estado: saci.brasil.state(),
+  nome: saci.person.firstName(),
+  sobrenome: saci.person.lastName(),
+  telefone: saci.person.phone(),
+  cpf: saci.person.cpf(),
+  banco: saci.brasil.bank(),
+  estado: saci.brasil.state(),
 };
 ```
 
@@ -43,4 +44,5 @@ veja a pasta `examples` para mais!
 ---
 
 # Acknowledgements 🤝
+
 - [Faker-js](https://github.com/faker-js/faker)
