@@ -4,8 +4,8 @@
 Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 
 > [!IMPORTANT]
-> Os dados criados pela biblioteca são criados de forma randômica
-> e tem apenas a intenção de parecerem reais. Por favor não os use em produção.
+> Os dados criados pela biblioteca são criados de forma randômica e tem apenas
+> a intenção de parecerem reais. Por favor não os use em produção.
 
 ---
 
@@ -26,7 +26,7 @@ $ jsr add @saci5/saci
 Use com: 
 
 ```typescript
-import { saci } from "@saci5/saci";
+import { saci } from "@saci5/saci";untu-latest) (pull_request)Failing after 8s 
 
 const pessoa = {
     nome: saci.person.firstName(),
@@ -37,7 +37,9 @@ const pessoa = {
     estado: saci.brasil.state(),
 };
 ```
+
 veja a pasta `examples` para mais!
+
 ---
 
 # Acknowledgements 🤝
