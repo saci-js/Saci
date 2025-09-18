@@ -8,6 +8,6 @@ Deno.test("student.ra()", () => {
   assertEquals(raDefault.length, 8);
 
   const customLength = 10;
-  const raCustom = student.ra({ length: 10 });
+  const raCustom = student.ra({ length: customLength });
   assertEquals(raCustom.length, customLength);
 });
