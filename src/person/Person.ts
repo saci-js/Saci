@@ -57,7 +57,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const cpf = saci.person.cpf() // 123.456.789-01
    * ```
    */
@@ -96,7 +96,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const rg = saci.person.rg() // 12.456.789-X
    * ```
    */
@@ -125,7 +125,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const neutralName = saci.person.firstName() // Lucas, Ana, Rodrigo, Maria, ...
    *
    * const mascName = saci.person.firstName({ set: "masculine" }) // Lucas, Rodrigo, ...
@@ -148,7 +148,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const neutralName = saci.person.lastName() // Gonçalves, Soares, Souza, ...
    * ```
    */
@@ -163,7 +163,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
 
    * const neutralName = saci.person.fullName() // João de Castro Barbosa, Ana Lima Freitas ...
    *
@@ -197,7 +197,7 @@ export class Person {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    *
    * const yudi = {
    *   name: "Yudi",

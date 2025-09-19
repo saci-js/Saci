@@ -1,6 +1,6 @@
 # Saci
 
-[![ci](https://github.com/Saci5/Saci/actions/workflows/ci.yml/badge.svg)](https://github.com/Saci5/Saci/actions/workflows/ci.yml)
+[![ci](https://github.com/saci-js/Saci/actions/workflows/ci.yml/badge.svg)](https://github.com/saci-js/Saci/actions/workflows/ci.yml)
 
 Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 
@@ -21,13 +21,13 @@ Uma biblioteca de dados sintéticos brasileiros para mockups, testes e MVPs.
 Baixe com o [jsr](https://jsr.io/)
 
 ```bash
-$ jsr add @saci5/saci
+$ jsr add @saci-js/saci
 ```
 
 Use com:
 
 ```typescript
-import { saci } from "@saci5/saci";
+import { saci } from "@saci-js/saci";
 
 const pessoa = {
   nome: saci.person.firstName(),

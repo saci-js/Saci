@@ -74,7 +74,7 @@ export class Brasil {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const banco = saci.brasil.bank() // Bradesco, Banco Inter, BTG Pactual
    * ```
    */
@@ -93,7 +93,7 @@ export class Brasil {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const randomCity = await saci.brasil.city();
    *
    * const citySP = await saci.brasil.city({ state: "SP" });
@@ -117,11 +117,11 @@ export class Brasil {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const uf = saci.brasil.state() // "SP", "RJ", "MG", etc.
    * ```
    */
   state(): StateBrasil {
-    return pickRandom([...states]) as StateBrasil;
+    return pickRandom(states) as StateBrasil;
   }
 }
