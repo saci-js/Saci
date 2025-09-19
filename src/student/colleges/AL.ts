@@ -4,36 +4,36 @@ export default [
   {
     "acronym": "UNEAL",
     "name": "Universidade Estadual de Alagoas",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UNCISAL",
     "name": "Universidade Estadual de Ciências da Saúde de Alagoas",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFAL",
     "name": "Instituto Federal de Alagoas",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFAL",
     "name": "Universidade Federal de Alagoas",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "CESMAC",
     "name": "Centro de Estudos Superiores de Maceió",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FAP",
     "name": "Faculdade Pitágoras",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FITS",
     "name": "Faculdade Integrada Tiradentes",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];

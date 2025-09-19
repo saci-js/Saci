@@ -4,31 +4,31 @@ export default [
   {
     "acronym": "IFAC",
     "name": "Instituto Federal do Acre",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFAC",
     "name": "Universidade Federal do Acre",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "FADISI",
     "name": "Faculdade Diocesana São José",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNAMA",
     "name": "Universidade da Amazônia",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNESA",
     "name": "Universidade Estácio de Sá",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNINTER",
     "name": "Grupo Educacional Uninter",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];

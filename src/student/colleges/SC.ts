@@ -4,111 +4,111 @@ export default [
   {
     "acronym": "FURB",
     "name": "Fundação Universidade Regional de Blumenau",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "SOCIESC",
     "name": "Sociedade Educacional de Santa Catarina",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UNESC",
     "name": "Universidade do Extremo Sul Catarinense",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "FMP",
     "name": "Faculdade Municipal de Palhoça",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "CEETEPS",
     "name": "Centro Estadual de Educação Tecnológica Paula Souza",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UDESC",
     "name": "Universidade do Estado de Santa Catarina",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFFS",
     "name": "Universidade Federal da Fronteira Sul",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFSC",
     "name": "Instituto Federal de Santa Catarina",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFC",
     "name": "Instituto Federal Catarinense",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFSC",
     "name": "Universidade Federal de Santa Catarina",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "SENAC",
     "name": "Faculdade Senac - Santa Catarina",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNOESC",
     "name": "Universidade do Oeste de Santa Catarina",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIASSELVI",
     "name": "Centro Universitário Leonardo da Vinci",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNISUL",
     "name": "Universidade do Sul de Santa Catarina",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNC",
     "name": "Universidade do Contestado",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIARP",
     "name": "Universidade Alto Vale do Rio do Peixe",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNERJ",
     "name": "Centro Universitário de Jaraguá do Sul",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIVALI",
     "name": "Universidade do Vale do Itajaí",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIVILLE",
     "name": "Universidade da Região de Joinville",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIPLAC",
     "name": "Universidade do Planalto Catarinense",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNISUL",
     "name": "Universidade do Sul de Santa Catarina",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIAVAN",
     "name": "Centro Universitário Avantis",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];

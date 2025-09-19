@@ -4,21 +4,21 @@ export default [
   {
     "acronym": "UERR",
     "name": "Universidade Estadual de Roraima",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFRR",
     "name": "Universidade Federal de Roraima",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFRR",
     "name": "Instituto Federal de Roraima",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "FARES",
     "name": "Faculdade Roraimense de Ensino Superior",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];

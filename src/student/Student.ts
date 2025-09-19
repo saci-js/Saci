@@ -78,33 +78,33 @@ export class Student {
 
   course(): string {
     /**
-   * Generates a random course.
-   *
-   * @returns a random course.
-   *
-   * @example
-   * ```ts
-   * import { saci } from "@saci5/saci";
-   * const course1 = saci.student.course() // Administração Pública
-   * const course2 = saci.student.course({ length: 10 }) // Administração
-   * ```
-   */
+     * Generates a random course.
+     *
+     * @returns a random course.
+     *
+     * @example
+     * ```ts
+     * import { saci } from "@saci5/saci";
+     * const course1 = saci.student.course() // Administração Pública
+     * const course2 = saci.student.course({ length: 10 }) // Administração
+     * ```
+     */
     return pickRandom([...courses]);
   }
 
   async college(opts?: CollegeOptions): Promise<College | string> {
     /**
-   * Generates a random college.
-   *
-   * @returns a random college.
-   *
-   * @example
-   * ```ts
-   * import { saci } from "@saci5/saci";
-   * const college1 = saci.student.college() // Universidade Federal do Rio de Janeiro
-   * const college2 = saci.student.college({ length: 10 }) // Universidade Federal do Rio de Janeiro
-   * ```
-   */
+     * Generates a random college.
+     *
+     * @returns a random college.
+     *
+     * @example
+     * ```ts
+     * import { saci } from "@saci5/saci";
+     * const college1 = saci.student.college() // Universidade Federal do Rio de Janeiro
+     * const college2 = saci.student.college({ length: 10 }) // Universidade Federal do Rio de Janeiro
+     * ```
+     */
     const brasil = new Brasil();
     const stateUF: StateBrasil = opts?.state || brasil.state();
     const complete: boolean = opts?.complete || false;

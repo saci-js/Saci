@@ -4,51 +4,51 @@ export default [
   {
     "acronym": "UEPB",
     "name": "Universidade Estadual da Paraíba",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFPB",
     "name": "Instituto Federal da Paraíba",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFPB",
     "name": "Universidade Federal da Paraíba",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFCG",
     "name": "Universidade Federal de Campina Grande",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "ESBJ",
     "name": "Faculdade Maurício de Nassau",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIBRASIL",
     "name": "Centro Universitário Autônomo do Brasil",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FAVAP",
     "name": "Faculdades Vale do Piancó",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "IESP",
     "name": "Instituto de Educação Superior da Paraíba",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIFIP",
     "name": "Centro Universitário de Patos",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIFACISA",
     "name": "Centro Universitário Facisa[16]",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];

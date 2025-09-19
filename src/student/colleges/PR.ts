@@ -4,186 +4,186 @@ export default [
   {
     "acronym": "UNESPAR",
     "name": "Universidade Estadual do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UEL",
     "name": "Universidade Estadual de Londrina",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UEM",
     "name": "Universidade Estadual de Maringá",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UENP",
     "name": "Universidade Estadual do Norte do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UEPG",
     "name": "Universidade Estadual de Ponta Grossa",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UNICENTRO",
     "name": "Universidade Estadual do Centro-Oeste",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UNIOESTE",
     "name": "Universidade Estadual do Oeste do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "IFPR",
     "name": "Instituto Federal do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UTFPR",
     "name": "Universidade Tecnológica Federal do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFPR",
     "name": "Universidade Federal do Paraná",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UNILA",
     "name": "Universidade Federal da Integração Latino-Americana",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "UFFS",
     "name": "Universidade Federal da Fronteira Sul",
-    "type": "publica"
+    "type": "publica",
   },
   {
     "acronym": "FAE",
     "name": "FAE Centro Universitário[17]",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FAG",
     "name": "Fundação Assis Gurgacz",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FEPAR",
     "name": "Faculdade Evangélica do Paraná[18]",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FTSA",
     "name": "Faculdade Teológica Sul Americana",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "PUCPR",
     "name": "Pontifícia Universidade Católica do Paraná",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIFIL",
     "name": "Centro Universitário Filadélfia[19]",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "CESCAGE",
     "name": "Centro de Ensino Superior dos Campos Gerais",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FAG",
     "name": "Faculdade Guairacá",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FAJAR",
     "name": "Faculdade Jaguariaíva",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FATEB",
     "name": "Faculdade de Telêmaco Borba",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FANP",
     "name": "Faculdade do Noroeste Paranaense",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FASBAM",
     "name": "Faculdade São Basílio Magno",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FEITEP",
     "name": "Faculdade de Engenharia e Inovação Técnico Profissional[20]",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FG",
     "name": "Faculdade Guarapuava",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "FML",
     "name": "Faculdade Metropolitana Londrinense",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNICAMPO",
     "name": "Faculdade União de Campo Mourão[21]",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "INTEGRADO",
     "name": "Centro Universitário Integrado de Campo Mourão",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNICURITIBA",
     "name": "Centro Universitário Curitiba",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNINTER",
     "name": "Grupo Educacional Uninter",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNIPAR",
     "name": "Universidade Paranaense",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNOPAR",
     "name": "Universidade do Norte do Paraná",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UCP",
     "name": "Faculdades do Centro do Paraná",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UP",
     "name": "Universidade Positivo",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UTP",
     "name": "Universidade Tuiuti do Paraná",
-    "type": "privada"
+    "type": "privada",
   },
   {
     "acronym": "UNISEP",
     "name": "União de Ensino do Sudoeste do Paraná [22]",
-    "type": "privada"
-  }
+    "type": "privada",
+  },
 ];
