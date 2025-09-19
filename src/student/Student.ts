@@ -1,6 +1,6 @@
 import { pickRandom, randomBetween } from "../utils.ts";
 import courses from "./course/courses.ts";
-import { Brasil, StateBrasil } from "../brasil/Brasil.ts";
+import { Brasil, type StateBrasil } from "../brasil/Brasil.ts";
 
 /** Options for {@linkcode Student.ra}. */
 export interface RaOptions {
