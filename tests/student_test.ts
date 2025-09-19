@@ -1,6 +1,6 @@
 import { assertEquals } from "@std/assert/equals";
 import { assert } from "@std/assert";
-import { College, CollegeOptions, Student } from "../src/student/Student.ts";
+import { type College, CollegeOptions, Student } from "../src/student/Student.ts";
 import courses from "../src/student/course/courses.ts";
 import states from "../src/brasil/states.ts";
 import { StateBrasil } from "../src/brasil/Brasil.ts";
