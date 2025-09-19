@@ -1,3 +1,3 @@
 import { Saci } from "./Saci.ts";
 
-export const saci = new Saci();
+export const saci: Saci = new Saci();
