@@ -2,12 +2,12 @@ import { assertEquals } from "@std/assert/equals";
 import { assert } from "@std/assert";
 import {
   type College,
-  CollegeOptions,
+  type CollegeOptions,
   Student,
 } from "../src/student/Student.ts";
 import courses from "../src/student/course/courses.ts";
 import states from "../src/brasil/states.ts";
-import { StateBrasil } from "../src/brasil/Brasil.ts";
+import { type StateBrasil } from "../src/brasil/Brasil.ts";
 
 const student = new Student();
 
