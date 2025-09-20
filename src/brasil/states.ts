@@ -1,4 +1,4 @@
-const states = [
+export default [
   "AC",
   "AL",
   "AM",
@@ -26,6 +26,4 @@ const states = [
   "SP",
   "SE",
   "TO",
-] as const;
-
-export default states;
+];

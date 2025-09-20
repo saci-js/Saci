@@ -12,12 +12,25 @@ export interface RaOptions {
   length?: number;
 }
 
+/** College object to be returned in {@linkcode Student.college}. */
 export interface College {
+  /**
+   * The full name of the college.
+   */
   name: string;
+
+  /**
+   * The reduced name of the college.
+   */
   acronym: string;
+
+  /**
+   * If the college is public or a private institution.
+   */
   type: string;
 }
 
+/** Options for {@linkcode Student.college}. */
 export interface CollegeOptions {
   /**
    * If true will return both the college name, acronym and type.
@@ -26,14 +39,14 @@ export interface CollegeOptions {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const college = saci.student.college({ complete: true }) // { name: "Universidade Federal do Rio de Janeiro", acronym: "UFRJ", type: "publica" }
    * ```
    * In the other hand, if false will return only the college name.
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const college = saci.student.college({ complete: false }) // "Universidade Federal do Rio de Janeiro"
    * ```
    */
@@ -53,7 +66,7 @@ export class Student {
    *
    * @example
    * ```ts
-   * import { saci } from "@saci5/saci";
+   * import { saci } from "@saci-js/saci";
    * const ra1 = saci.student.ra() // 59817749
    * const ra2 = saci.student.ra({ length: 10 }) // 0719502597
    * ```
@@ -68,22 +81,34 @@ export class Student {
     return n.join("");
   }
 
+  /**
+   * Generates a random course.
+   *
+   * @returns a random course.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const course1 = saci.student.course() // Administração Pública
+   * const course2 = saci.student.course() // Administração
+   * ```
+   */
   course(): string {
-    /**
-     * Generates a random course.
-     *
-     * @returns a random course.
-     *
-     * @example
-     * ```ts
-     * import { saci } from "@saci5/saci";
-     * const course1 = saci.student.course() // Administração Pública
-     * const course2 = saci.student.course({ length: 10 }) // Administração
-     * ```
-     */
-    return pickRandom([...courses]);
+    return pickRandom(courses);
   }
 
+  /**
+   * Generates a random college.
+   *
+   * @returns a random college.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const course1 = saci.student.college() // "Universidade de São Paulo"
+   * const { name, acronym, type } = saci.student.course({ complete: true }) // { name: "Universidade de Campinas", acronym: "UNICAMP", type: "publica" }
+   * ```
+   */
   college(opts?: CollegeOptions): College | string {
     const complete: boolean = opts?.complete || false;
     const college: College = pickRandom(colleges);
