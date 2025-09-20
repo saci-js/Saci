@@ -44,6 +44,13 @@ export interface PhoneOptions {
   formated?: boolean;
 }
 
+/** Options for {@linkcode Person.cnh}. */
+export interface CnhOptions {
+  /**
+   * If the CNH should return formated.
+   */
+  formated?: boolean;
+}
 /**
  * Class containing many methods that are useful for creating fake data about a person.
  *
@@ -234,5 +241,53 @@ export class Person {
       isMobile ? `9${firstHalf}${secondHalf}` : `${firstHalf}${secondHalf}`,
     );
     return parts.join("");
+  }
+
+
+  /**
+   * Generates a random valid CNH
+   *
+   * @returns a valid CNH.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const cnh = saci.person.cnh() // 123.456.789-01
+   * ```
+   */
+  cnh(opts?: CnhOptions): string {
+    // This one has the same format as CPF, rules also closely related to CPF, but not the same
+    const { formated = true } = opts ?? {};
+
+    const baseNumber = randomBetween(100_000_000, 999_999_999);
+    const baseDigits = String(baseNumber).split("").map(Number);
+
+    let sum = baseDigits.reduce((acc, digit, idx) => acc + digit * (9 - idx), 0);
+    let firstCheckDigit = sum % 11;
+    let firstIsGreaterThanNine = false;
+    if (firstCheckDigit > 9) {
+      firstCheckDigit = 0;
+      firstIsGreaterThanNine = true;
+    }
+
+    sum = baseDigits.reduce((acc, digit, idx) => acc + digit * (idx + 1), 0);
+    let secondCheckDigit = sum % 11;
+    if (firstIsGreaterThanNine) {
+      secondCheckDigit = secondCheckDigit - 2 < 0 ? secondCheckDigit + 9 : secondCheckDigit - 2;
+    }
+    if (secondCheckDigit > 9) secondCheckDigit = 0;
+
+    baseDigits.push(firstCheckDigit, secondCheckDigit);
+
+    const digitsStr = baseDigits.join("");
+
+    if (!formated) return digitsStr;
+
+    const firstThree = digitsStr.slice(0, 3);
+    const secondThree = digitsStr.slice(3, 6);
+    const lastThree = digitsStr.slice(6, 9);
+    const checkDigits = digitsStr.slice(9);
+
+    return `${firstThree}.${secondThree}.${lastThree}-${checkDigits}`;
   }
 }
