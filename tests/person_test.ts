@@ -146,7 +146,7 @@ Deno.test("person.phone()", () => {
 
 Deno.test("person.cnh()", () => {
   const cnh = person.cnh();
-  
+
   assert(isValidCnh(cnh));
   assert(CNH_REGEX.test(cnh));
 });
