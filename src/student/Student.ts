@@ -30,29 +30,6 @@ export interface College {
   type: string;
 }
 
-/** Options for {@linkcode Student.college}. */
-export interface CollegeOptions {
-  /**
-   * If true will return both the college name, acronym and type.
-   *
-   * @default {false}
-   *
-   * @example
-   * ```ts
-   * import { saci } from "@saci-js/saci";
-   * const college = saci.student.college({ complete: true }) // { name: "Universidade Federal do Rio de Janeiro", acronym: "UFRJ", type: "publica" }
-   * ```
-   * In the other hand, if false will return only the college name.
-   *
-   * @example
-   * ```ts
-   * import { saci } from "@saci-js/saci";
-   * const college = saci.student.college({ complete: false }) // "Universidade Federal do Rio de Janeiro"
-   * ```
-   */
-  complete?: boolean;
-}
-
 /**
  * Class containing many methods that are useful for creating fake data about a student.
  *
@@ -109,8 +86,11 @@ export class Student {
    * const { name, acronym, type } = saci.student.course({ complete: true }) // { name: "Universidade de Campinas", acronym: "UNICAMP", type: "publica" }
    * ```
    */
-  college(opts?: CollegeOptions): College | string {
-    const complete: boolean = opts?.complete || false;
+  college(): string;
+  college(opts: { complete: true }): College;
+  college(opts: { complete: false }): string;
+  college(opts?: { complete?: boolean }): College | string {
+    const complete: boolean = opts?.complete ?? false;
     const college: College = pickRandom(colleges);
     return complete ? college : college.name;
   }

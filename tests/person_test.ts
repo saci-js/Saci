@@ -63,18 +63,18 @@ Deno.test("person.rg() does not return the same rg", () => {
 Deno.test("person.firstName()", () => {
   const name = person.firstName();
 
-  assert(typeof name, "string");
+  assertEquals(typeof name, "string");
   assert([...fem, ...masc].includes(name));
 
   const masculineName = person.firstName({ set: "masculine" });
 
-  assert(typeof masculineName, "string");
+  assertEquals(typeof masculineName, "string");
   assert(masc.includes(masculineName));
   assert(!fem.includes(masculineName));
 
   const feminineName = person.firstName({ set: "feminine" });
 
-  assert(typeof feminineName, "string");
+  assertEquals(typeof feminineName, "string");
   assert(fem.includes(feminineName));
   assert(!masc.includes(feminineName));
 });
@@ -82,14 +82,14 @@ Deno.test("person.firstName()", () => {
 Deno.test("person.lastName()", () => {
   const lastName = person.lastName();
 
-  assert(typeof lastName, "string");
+  assertEquals(typeof lastName, "string");
   assert(lastNames.includes(lastName));
 });
 
 Deno.test("person.fullName()", () => {
   const fullName = person.fullName();
 
-  assert(typeof fullName === "string");
+  assertEquals(typeof fullName, "string");
 
   const sections = fullName.split(" ");
   const first = sections[0];

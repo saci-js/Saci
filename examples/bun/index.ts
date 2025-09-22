@@ -11,8 +11,7 @@ async function* generateRandomPerson(
 ): AsyncGenerator<string> {
   for (let i = 0; i < to; i++) {
     const state = saci.brasil.state();
-    // @ts-ignore Será string
-    const city: string = await saci.brasil.city({ state });
+    const city: string = await saci.brasil.city({ state, ibge: false });
 
     const nome = saci.person.firstName();
     const sobrenome = saci.person.lastName();

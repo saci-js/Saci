@@ -51,14 +51,31 @@ export interface CityOptions {
    *
    * @default {pickRandom(states)}
    */
-  state: StateBrasil;
+  state?: StateBrasil;
+
+  /**
+   * If true will return the city ibgeCode.
+   *
+   * @default {true}
+   */
+  ibge?: true;
+}
+
+/** Options for {@linkcode Brasil.city}. */
+export interface StringOptions {
+  /**
+   * A state to select the city from.
+   *
+   * @default {pickRandom(states)}
+   */
+  state?: StateBrasil;
 
   /**
    * If true will return the city ibgeCode.
    *
    * @default {false}
    */
-  ibge?: boolean;
+  ibge?: false | undefined;
 }
 
 /**
@@ -101,7 +118,9 @@ export class Brasil {
    * const cityObj = await saci.brasil.city({ state: "RJ", ibge: true });
    * ```
    */
-  async city(opts?: CityOptions): Promise<City | string> {
+  async city(opts: CityOptions): Promise<City>;
+  async city(opts?: StringOptions): Promise<string>;
+  async city(opts?: CityOptions | StringOptions): Promise<City | string> {
     const stateUF: StateBrasil = opts?.state || this.state();
     const ibge: boolean = opts?.ibge || false;
 
