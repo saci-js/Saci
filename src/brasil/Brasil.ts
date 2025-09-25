@@ -144,6 +144,17 @@ export class Brasil {
     return pickRandom(states) as StateBrasil;
   }
 
+  /**
+   * Returns a random Brazilian CEP code.
+   *
+   * @returns a CEP code.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const uf = saci.brasil.cep() // 	18320-970
+   * ```
+   */
   cep(): string {
     const cep = Array.from({ length: 8 }, () => {
       return randomBetween(0, 9);
