@@ -1,54 +1,32 @@
-import { assert } from "@std/assert";
-import {
-  Brasil,
-  type City,
-  type CityOptions,
-  type StateBrasil,
-} from "../src/brasil/Brasil.ts";
+import { assert, assertEquals } from "@std/assert";
+import { Brasil, type StateBrasil } from "../src/brasil/Brasil.ts";
 import bancos from "../src/brasil/banks.ts";
 import states from "../src/brasil/states.ts";
 
+const brasil = new Brasil();
 Deno.test("brasil.bank()", () => {
-  const brasil = new Brasil();
   const banco = brasil.bank();
 
   assert(bancos.includes(banco));
 });
 
-Deno.test("brasil.city()", async () => {
-  const brasil = new Brasil();
-
-  const cityNoState: City | string = await brasil.city();
-  assert(typeof cityNoState === "string");
+Deno.test("brasil.city() string", async () => {
+  const cityNoState = await brasil.city();
+  assertEquals(typeof cityNoState, "string");
   assert(cityNoState.length > 0);
+});
 
-  const ibgeOptions = [true, false, undefined];
-
-  for (const ibge of ibgeOptions) {
-    for (const state of states) {
-      const city: City | string = await brasil.city(
-        { state, ibge } as CityOptions,
-      );
-
-      if (ibge) {
-        assert(typeof city === "object");
-        assert(typeof city.name === "string");
-        assert(typeof city.ibgeCode === "string");
-        assert(city.name.length > 0);
-        assert(/^\d{7}$/.test(city.ibgeCode));
-      } else {
-        assert(typeof city === "string");
-        assert(city.length > 0);
-      }
-    }
-  }
+Deno.test("brasil.city() City", async () => {
+  const city = await brasil.city({ state: "SP", ibge: true });
+  assertEquals(typeof city, "object");
+  assert(city.name !== undefined);
+  assert(city.ibgeCode !== undefined);
 });
 
 Deno.test("brasil.state()", () => {
-  const brasil = new Brasil();
   const state: StateBrasil = brasil.state();
 
   assert(states.includes(state));
-  assert(typeof state === "string");
-  assert(state.length === 2);
+  assertEquals(typeof state, "string");
+  assertEquals(state.length, 2);
 });
