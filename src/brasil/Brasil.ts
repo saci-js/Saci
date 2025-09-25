@@ -1,4 +1,4 @@
-import { pickRandom } from "../utils.ts";
+import { pickRandom, randomBetween } from "../utils.ts";
 import banks from "./banks.ts";
 import states from "./states.ts";
 
@@ -142,5 +142,24 @@ export class Brasil {
    */
   state(): StateBrasil {
     return pickRandom(states) as StateBrasil;
+  }
+
+  /**
+   * Returns a random Brazilian CEP code.
+   *
+   * @returns a CEP code.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const uf = saci.brasil.cep() // 	18320-970
+   * ```
+   */
+  cep(): string {
+    const cep = Array.from({ length: 8 }, () => {
+      return randomBetween(0, 9);
+    });
+    // splice modifies the array
+    return `${cep.splice(0, 5).join("")}-${cep.join("")}`;
   }
 }

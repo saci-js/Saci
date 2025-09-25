@@ -30,3 +30,9 @@ Deno.test("brasil.state()", () => {
   assertEquals(typeof state, "string");
   assertEquals(state.length, 2);
 });
+
+Deno.test("brasil.cep()", () => {
+  const cep = brasil.cep();
+  assertEquals(cep.length, 9);
+  assert(cep.includes("-"));
+});
