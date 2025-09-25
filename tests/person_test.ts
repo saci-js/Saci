@@ -13,7 +13,6 @@ const RG_REGEX = /^\d{1,2}\.?\d{3}\.?\d{3}-?[0-9Xx]$/;
 const PARTICLES = ["do", "da", "de"];
 const FIXO_REGEX = /^(?:\+55\s?)?(?:\(?\d{2}\)?\s?)?\d{4}-\d{4}$/;
 const MOBILE_REGEX = /^(?:\+55\s?)?(?:\(?\d{2}\)?\s?)?9\d{4}-\d{4}$/;
-const CNH_REGEX = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Same as CPF format
 
 // dirty hack to check if the cpf string is valid
 function isValidCpf(cpf: string) {
@@ -34,14 +33,8 @@ export function isValidRg(rg: string): boolean {
 }
 
 export function isValidCnh(cnh: string): boolean {
-  if (!CNH_REGEX.test(cnh)) return false;
-
   const nums = cnh.replace(/\D/g, "").split("").map(Number);
   if (nums.length !== 11) return false;
-
-  // PERFORMANCE? Talvez seja melhor usar uma expressão regular para verificar se todos os dígitos são iguais, ai aumentamos a performance um pouco. Mas talvez não seja necessário. O que acha?
-  // exemplo: 00000000000, 11111111111, etc.
-  //if (/^(\d)\1{10}$/.test(nums.join(""))) return false;
 
   let sum1 = 0;
   for (let i = 0; i < 9; i++) sum1 += nums[i] * (9 - i);
@@ -148,7 +141,6 @@ Deno.test("person.cnh()", () => {
   const cnh = person.cnh();
 
   assert(isValidCnh(cnh));
-  assert(CNH_REGEX.test(cnh));
 });
 
 Deno.test("person.cnh() does not return the same cnh", () => {

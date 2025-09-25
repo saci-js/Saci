@@ -27,9 +27,6 @@ app.get("/", (_req: express.Request, res: express.Response) => {
   });
 });
 
-// Assim passa no link, mas sei que não é assim que deve ficar
 app.listen(port, () => {
-  // Server is listening
-  // deno-lint-ignore no-console
   console.log(`Server listening at localhost:${port}`);
 });
