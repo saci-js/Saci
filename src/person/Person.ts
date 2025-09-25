@@ -235,4 +235,44 @@ export class Person {
     );
     return parts.join("");
   }
+
+  /**
+   * Generates a random valid CNH
+   *
+   * @returns a valid CNH.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const cnh = saci.person.cnh() // 12345678901
+   * ```
+   */
+  cnh(): string {
+    const baseNumber = randomBetween(100_000_000, 999_999_999);
+    const baseDigits = String(baseNumber).split("").map(Number);
+
+    let sum = baseDigits.reduce(
+      (acc, digit, idx) => acc + digit * (9 - idx),
+      0,
+    );
+    let firstCheckDigit = sum % 11;
+    let firstIsGreaterThanNine = false;
+    if (firstCheckDigit > 9) {
+      firstCheckDigit = 0;
+      firstIsGreaterThanNine = true;
+    }
+
+    sum = baseDigits.reduce((acc, digit, idx) => acc + digit * (idx + 1), 0);
+    let secondCheckDigit = sum % 11;
+    if (firstIsGreaterThanNine) {
+      secondCheckDigit = secondCheckDigit - 2 < 0
+        ? secondCheckDigit + 9
+        : secondCheckDigit - 2;
+    }
+    if (secondCheckDigit > 9) secondCheckDigit = 0;
+
+    baseDigits.push(firstCheckDigit, secondCheckDigit);
+
+    return baseDigits.join("");
+  }
 }

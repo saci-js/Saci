@@ -32,6 +32,25 @@ export function isValidRg(rg: string): boolean {
   return RG_REGEX.test(rg);
 }
 
+export function isValidCnh(cnh: string): boolean {
+  const nums = cnh.replace(/\D/g, "").split("").map(Number);
+  if (nums.length !== 11) return false;
+
+  let sum1 = 0;
+  for (let i = 0; i < 9; i++) sum1 += nums[i] * (9 - i);
+  const dv1Raw = sum1 % 11;
+  const dv1 = dv1Raw > 9 ? 0 : dv1Raw;
+  const firstExceeded = dv1Raw > 9;
+
+  let sum2 = 0;
+  for (let i = 0; i < 9; i++) sum2 += nums[i] * (i + 1);
+  let dv2Raw = sum2 % 11;
+  if (firstExceeded) dv2Raw = dv2Raw - 2 < 0 ? dv2Raw + 9 : dv2Raw - 2;
+  const dv2 = dv2Raw > 9 ? 0 : dv2Raw;
+
+  return nums[9] === dv1 && nums[10] === dv2;
+}
+
 const person = new Person();
 
 Deno.test("person.cpf()", () => {
@@ -116,4 +135,17 @@ Deno.test("person.phone()", () => {
   assert(!ddiNoDdd.includes("("));
   const brasilFormat = ddiNoDdd.split(" ")[0];
   assertEquals(brasilFormat, "+55");
+});
+
+Deno.test("person.cnh()", () => {
+  const cnh = person.cnh();
+
+  assert(isValidCnh(cnh));
+});
+
+Deno.test("person.cnh() does not return the same cnh", () => {
+  const cnh1 = person.cnh();
+  const cnh2 = person.cnh();
+
+  assertNotEquals(cnh1, cnh2);
 });

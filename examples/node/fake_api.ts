@@ -27,4 +27,6 @@ app.get("/", (_req: express.Request, res: express.Response) => {
   });
 });
 
-app.listen(port, (_) => console.log(`Server listening at localhost:${port}`));
+app.listen(port, () => {
+  console.log(`Server listening at localhost:${port}`);
+});
