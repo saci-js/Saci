@@ -154,6 +154,7 @@ Deno.test("person.cnh() does not return the same cnh", () => {
 Deno.test("person.cnpj()", () => {
   const cnpj = person.cnpj();
 
+  console.log(cnpj);
   assertEquals(cnpj.length, 18);
   assertStringIncludes(cnpj, "/");
   assertStringIncludes(cnpj, ".");

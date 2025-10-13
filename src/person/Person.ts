@@ -298,7 +298,7 @@ export class Person {
     );
 
     let modulo = 11 - (sum % 11);
-    const firstDigit = modulo === 10 ? 0 : modulo;
+    const firstDigit = modulo >= 10 ? 0 : modulo;
 
     sum = [firstDigit, ...secondBlock.reverse(), ...firstBlock.reverse()]
       .reduce(
@@ -307,7 +307,7 @@ export class Person {
       );
 
     modulo = 11 - (sum % 11);
-    const secondDigit = modulo === 10 ? 0 : modulo;
+    const secondDigit = modulo >= 10 ? 0 : modulo;
 
     return `${firstBlock.splice(0, 2).join("")}.${
       firstBlock.splice(0, 3).join("")
