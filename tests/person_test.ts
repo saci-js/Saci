@@ -6,6 +6,7 @@ import {
   assertArrayIncludes,
   assertEquals,
   assertNotEquals,
+  assertStringIncludes,
 } from "@std/assert";
 
 const CPF_REGEX = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
@@ -148,4 +149,13 @@ Deno.test("person.cnh() does not return the same cnh", () => {
   const cnh2 = person.cnh();
 
   assertNotEquals(cnh1, cnh2);
+});
+
+Deno.test("person.cnpj()", () => {
+  const cnpj = person.cnpj();
+
+  assertEquals(cnpj.length, 18);
+  assertStringIncludes(cnpj, "/");
+  assertStringIncludes(cnpj, ".");
+  assertStringIncludes(cnpj, "-");
 });

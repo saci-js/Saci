@@ -63,8 +63,7 @@ export class Person {
    */
   // TODO(wasix): No futuro talvez seja legal ter uma opção para voltar formatado ou não
   cpf(): string {
-    const N = randomBetween(100_000_000, 999_999_999);
-    const digits = String(N).split("").map(Number);
+    const digits = Array.from({ length: 9 }, () => randomBetween(0, 9));
 
     let weightedSum = digits.reduce(
       (acc, digit, idx) => acc + digit * (10 - idx),
@@ -101,8 +100,7 @@ export class Person {
    * ```
    */
   rg(): string {
-    const N = randomBetween(10_000_000, 99_999_999);
-    const digits = String(N).split("").map(Number);
+    const digits = Array.from({ length: 8 }, () => randomBetween(0, 9));
 
     const weightedSum = digits.reduce(
       (acc, digit, idx) => acc + digit * (9 - idx),
@@ -248,8 +246,7 @@ export class Person {
    * ```
    */
   cnh(): string {
-    const baseNumber = randomBetween(100_000_000, 999_999_999);
-    const baseDigits = String(baseNumber).split("").map(Number);
+    const baseDigits = Array.from({ length: 9 }, () => randomBetween(0, 9));
 
     let sum = baseDigits.reduce(
       (acc, digit, idx) => acc + digit * (9 - idx),
@@ -274,5 +271,48 @@ export class Person {
     baseDigits.push(firstCheckDigit, secondCheckDigit);
 
     return baseDigits.join("");
+  }
+
+  // Por enquanto fica aqui
+  /**
+   * Generates a random valid CNPJ
+   *
+   * @returns a valid CNPJ.
+   *
+   * @example
+   * ```ts
+   * import { saci } from "@saci-js/saci";
+   * const cnh = saci.person.cnpj() // 36.333.513/0002-42
+   * ```
+   */
+  cnpj(): string {
+    const firstBlock = Array.from({ length: 8 }, () => {
+      return randomBetween(1, 9);
+    });
+
+    const secondBlock = [0, 0, 0, randomBetween(1, 3)];
+
+    let sum = [...secondBlock.reverse(), ...firstBlock.reverse()].reduce(
+      (acc, digit, idx) => acc + digit * ((idx % 8) + 2),
+      0,
+    );
+
+    let modulo = 11 - (sum % 11);
+    const firstDigit = modulo >= 10 ? 0 : modulo;
+
+    sum = [firstDigit, ...secondBlock.reverse(), ...firstBlock.reverse()]
+      .reduce(
+        (acc, digit, idx) => acc + digit * ((idx % 8) + 2),
+        0,
+      );
+
+    modulo = 11 - (sum % 11);
+    const secondDigit = modulo >= 10 ? 0 : modulo;
+
+    return `${firstBlock.splice(0, 2).join("")}.${
+      firstBlock.splice(0, 3).join("")
+    }.${firstBlock.splice(0, 3).join("")}/${
+      secondBlock.join("")
+    }-${firstDigit}${secondDigit}`;
   }
 }
