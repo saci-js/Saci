@@ -1,5 +1,6 @@
 import { assert, assertEquals } from "@std/assert";
-import { Brasil, type StateBrasil } from "../src/brasil/Brasil.ts";
+import { Brasil } from "../src/brasil/Brasil.ts";
+import type { StateBrasil } from "../src/brasil/options.ts";
 import bancos from "../src/brasil/banks.ts";
 import states from "../src/brasil/states.ts";
 

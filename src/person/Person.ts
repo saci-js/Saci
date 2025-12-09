@@ -1,48 +1,9 @@
 import { pickRandom, randomBetween } from "../utils.ts";
+import type { NamesOptions, PhoneOptions } from "./options.ts";
 import ddds from "./ddds.ts";
 import { fem, masc } from "./names/firstNames.ts";
 import lastNames from "./names/lastNames.ts";
-
-/** Options for {@linkcode Person.firstName} or {@linkcode Person.fullName}. */
-export interface NamesOptions {
-  /**
-   * The set to where to get the name from.
-   *
-   * @default {"neutral"}
-   */
-  set: "neutral" | "masculine" | "feminine";
-}
-
-/** Options for {@linkcode Person.phone}. */
-export interface PhoneOptions {
-  /**
-   * If the phone should include a DDD.
-   *
-   * @default {true}
-   */
-  ddd?: boolean;
-
-  /**
-   * If the phone should include brazilian DDI.
-   *
-   * @default {false}
-   */
-  ddi?: boolean;
-
-  /**
-   * The length of the phone number.
-   *
-   * @default {9}
-   */
-  length?: 9 | 8;
-
-  /**
-   * If the number should return formated.
-   *
-   * @default {true}
-   */
-  formated?: boolean;
-}
+import type { Options } from "../interface.ts";
 
 /**
  * Class containing many methods that are useful for creating fake data about a person.
@@ -61,8 +22,9 @@ export class Person {
    * const cpf = saci.person.cpf() // 123.456.789-01
    * ```
    */
-  // TODO(wasix): No futuro talvez seja legal ter uma opção para voltar formatado ou não
-  cpf(): string {
+  cpf(opts?: Options): string {
+    const { formated = true } = opts ?? {};
+
     const digits = Array.from({ length: 9 }, () => randomBetween(0, 9));
 
     let weightedSum = digits.reduce(
@@ -86,6 +48,8 @@ export class Person {
     const secondThree = digits.slice(3, 6).join("");
     const lastThree = digits.slice(6, 9).join("");
 
+    if (!formated) return digits.join("");
+
     return `${firstThree}.${secondThree}.${lastThree}-${digit1}${digit2}`;
   }
   /**
@@ -99,7 +63,8 @@ export class Person {
    * const rg = saci.person.rg() // 12.456.789-X
    * ```
    */
-  rg(): string {
+  rg(opts?: Options): string {
+    const { formated = true } = opts ?? {};
     const digits = Array.from({ length: 8 }, () => randomBetween(0, 9));
 
     const weightedSum = digits.reduce(
@@ -112,6 +77,8 @@ export class Person {
     const firstTwo = digits.slice(0, 2).join("");
     const secondThree = digits.slice(2, 5).join("");
     const lastThree = digits.slice(5, 8).join("");
+
+    if (!formated) return digits.join("");
 
     return `${firstTwo}.${secondThree}.${lastThree}-${digit}`;
   }
@@ -285,7 +252,8 @@ export class Person {
    * const cnh = saci.person.cnpj() // 36.333.513/0002-42
    * ```
    */
-  cnpj(): string {
+  cnpj(opts?: Options): string {
+    const { formated = true } = opts ?? {};
     const firstBlock = Array.from({ length: 8 }, () => {
       return randomBetween(1, 9);
     });
@@ -308,6 +276,13 @@ export class Person {
 
     modulo = 11 - (sum % 11);
     const secondDigit = modulo >= 10 ? 0 : modulo;
+    if (!formated) {
+      return `${firstBlock.splice(0, 2).join("")}${
+        firstBlock.splice(0, 3).join("")
+      }${firstBlock.splice(0, 3).join("")}${
+        secondBlock.join("")
+      }${firstDigit}${secondDigit}`;
+    }
 
     return `${firstBlock.splice(0, 2).join("")}.${
       firstBlock.splice(0, 3).join("")

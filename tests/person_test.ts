@@ -58,6 +58,9 @@ Deno.test("person.cpf()", () => {
   const cpf = person.cpf();
 
   assert(isValidCpf(cpf));
+
+  const cpf2 = person.cpf({ formated: false });
+  assert(!cpf2.includes("."));
 });
 
 Deno.test("person.cpf() does not return the same cpf", () => {
@@ -71,6 +74,10 @@ Deno.test("person.rg()", () => {
   const rg = person.rg();
 
   assert(isValidRg(rg));
+
+  const rg2 = person.rg({ formated: false });
+
+  assert(!rg2.includes("."));
 });
 
 Deno.test("person.rg() does not return the same rg", () => {
@@ -158,4 +165,10 @@ Deno.test("person.cnpj()", () => {
   assertStringIncludes(cnpj, "/");
   assertStringIncludes(cnpj, ".");
   assertStringIncludes(cnpj, "-");
+
+  const cnpj2 = person.cnpj({ formated: false });
+
+  assert(!cnpj2.includes("/"));
+  assert(!cnpj2.includes("."));
+  assert(!cnpj2.includes("-"));
 });
