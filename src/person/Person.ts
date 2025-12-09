@@ -4,7 +4,6 @@ import ddds from "./ddds.ts";
 import { fem, masc } from "./names/firstNames.ts";
 import lastNames from "./names/lastNames.ts";
 import type { Options } from "../interface.ts";
-import { format } from "jsr:@std/internal@^1.0.10/format";
 
 /**
  * Class containing many methods that are useful for creating fake data about a person.
