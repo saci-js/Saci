@@ -1,34 +1,7 @@
 import { pickRandom, randomBetween } from "../utils.ts";
+import type { College, RaOptions } from "./options.ts";
 import courses from "./course/courses.ts";
 import colleges from "./colleges.ts";
-
-/** Options for {@linkcode Student.ra}. */
-export interface RaOptions {
-  /**
-   * A certain length of the RA generated.
-   *
-   * @default {8}
-   */
-  length?: number;
-}
-
-/** College object to be returned in {@linkcode Student.college}. */
-export interface College {
-  /**
-   * The full name of the college.
-   */
-  name: string;
-
-  /**
-   * The reduced name of the college.
-   */
-  acronym: string;
-
-  /**
-   * If the college is public or a private institution.
-   */
-  type: string;
-}
 
 /**
  * Class containing many methods that are useful for creating fake data about a student.
@@ -48,6 +21,7 @@ export class Student {
    * const ra2 = saci.student.ra({ length: 10 }) // 0719502597
    * ```
    */
+  // TODO(wasix): Uma forma do usuário poder passar o formato que ele quiser
   ra(opts?: RaOptions): string {
     const { length = 8 } = opts ?? {};
 
